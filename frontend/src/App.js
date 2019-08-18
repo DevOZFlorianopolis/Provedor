@@ -1,6 +1,13 @@
 // /client/App.js
 import React, {Component} from 'react';
 import api from './services/api'
+import Menu from './components/menu'
+import Formf from './components/form'
+import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import * as r from 'react-bootstrap';
+
+
 class App extends Component {
     // initialize our state
     state = {
@@ -14,10 +21,10 @@ class App extends Component {
     };
 
     componentDidMount() {
-        this.getProviders();
+        this.getData();
         if (!this.state.intervalIsSet) {
             let interval = setInterval(this.getProviders, 1000);
-            this.setState({ intervalIsSet: interval });
+            this.setState({intervalIsSet: interval});
         }
     }
 
@@ -28,10 +35,10 @@ class App extends Component {
         }
     }
 
-    getProviders  = async () => {
+    getProviders = async () => {
         fetch('http://localhost:3001/api/provider/providers')
             .then((data) => data.json())
-            .then((res) => this.setState({ data: res.data }));
+            .then((res) => this.setState({data: res.data}));
     };
 
     putProvider = (message) => {
@@ -83,64 +90,94 @@ class App extends Component {
 
     render() {
         const {data} = this.state;
+
         return (
             <div>
-                <ul>
-                    {data.length <= 0
-                        ? 'Não há dados disponíveis'
-                        : data.map((dat) => (
-                            <li style={{padding: '10px'}} key={data.message}>
-                                <span style={{color: 'gray'}}> id: </span> {dat.id} <br/>
-                                <span style={{color: 'gray'}}> data: </span>
-                                {dat.message}
-                            </li>
-                        ))}
-                </ul>
-                <div style={{padding: '10px'}}>
-                    <input
-                        type="text"
-                        onChange={(e) => this.setState({message: e.target.value})}
-                        placeholder="Adicionar provedor"
-                        style={{width: '200px'}}
-                    />
-                    <button onClick={() => this.putProvider(this.state.message)}>
-                        ADD
-                    </button>
+                <div>
+                    <Menu/>
                 </div>
-                <div style={{padding: '10px'}}>
-                    <input
-                        type="text"
-                        style={{width: '200px'}}
-                        onChange={(e) => this.setState({idToDelete: e.target.value})}
-                        placeholder="ID do item a deletar"
-                    />
-                    <button onClick={() => this.deleteProvider(this.state.idToDelete)}>
-                        DELETE
-                    </button>
-                </div>
-                <div style={{padding: '10px'}}>
-                    <input
-                        type="text"
-                        style={{width: '200px'}}
-                        onChange={(e) => this.setState({idToUpdate: e.target.value})}
-                        placeholder="Update por id"
-                    />
-                    <input
-                        type="text"
-                        style={{width: '200px'}}
-                        onChange={(e) => this.setState({updateToApply: e.target.value})}
-                        placeholder="colocar novo valor"
-                    />
-                    <button
-                        onClick={() =>
-                            this.updateDB(this.state.idToUpdate, this.state.updateToApply)
-                        }
-                    >
-                        UPDATE
-                    </button>
-                </div>
+                <r.Row>
+                    <r.Col xs lg="9">
+                        <div className={'data-list'}>
+                            {data.map((dat) => (
+                                <article key={data.id}>
+                                    <span style={{color: 'gray'}}> </span>
+                                    <strong> {dat.name} </strong>
+                                    <a onClick> Editar </a>
+                                </article>
+                            ))};
+                        </div>
+                    </r.Col>
+                    <r.Col xs lg="2">
+                        < div style={{marginTop: 30, marginLeft: 20, marginRight: 20}}>
+                            <Formf/>
+                        </div>
+                    </r.Col>
+                </r.Row>
+
             </div>
-        );
+        )
+
+
+        // const {data} = this.state;
+        // return (
+        //     <div>
+        //         <ul>
+        //             {data.length <= 0
+        //                 ? 'Não há dados disponíveis'
+        //                 : data.map((dat) => (
+        //                     <li style={{padding: '10px'}} key={data.message}>
+        //                         <span style={{color: 'gray'}}> id: </span> {dat.id} <br/>
+        //                         <span style={{color: 'gray'}}> data: </span>
+        //                         {dat.message}
+        //                     </li>
+        //                 ))}
+        //         </ul>
+        //         <div style={{padding: '10px'}}>
+        //             <input
+        //                 type="text"
+        //                 onChange={(e) => this.setState({message: e.target.value})}
+        //                 placeholder="Adicionar provedor"
+        //                 style={{width: '200px'}}
+        //             />
+        //             <button onClick={() => this.putProvider(this.state.message)}>
+        //                 ADD
+        //             </button>
+        //         </div>
+        //         <div style={{padding: '10px'}}>
+        //             <input
+        //                 type="text"
+        //                 style={{width: '200px'}}
+        //                 onChange={(e) => this.setState({idToDelete: e.target.value})}
+        //                 placeholder="ID do item a deletar"
+        //             />
+        //             <button onClick={() => this.deleteProvider(this.state.idToDelete)}>
+        //                 DELETE
+        //             </button>
+        //         </div>
+        //         <div style={{padding: '10px'}}>
+        //             <input
+        //                 type="text"
+        //                 style={{width: '200px'}}
+        //                 onChange={(e) => this.setState({idToUpdate: e.target.value})}
+        //                 placeholder="Update por id"
+        //             />
+        //             <input
+        //                 type="text"
+        //                 style={{width: '200px'}}
+        //                 onChange={(e) => this.setState({updateToApply: e.target.value})}
+        //                 placeholder="colocar novo valor"
+        //             />
+        //             <button
+        //                 onClick={() =>
+        //                     this.updateDB(this.state.idToUpdate, this.state.updateToApply)
+        //                 }
+        //             >
+        //                 UPDATE
+        //             </button>
+        //         </div>
+        //     </div>
+        // );
     }
 
 //Bulma?
