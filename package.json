@@ -2,7 +2,7 @@
   "name": "provedor",
   "version": "1.0.0",
   "description": "Com sede em Florianópolis, desde de 2012, a devOZ desenvolve softwares focados em facilitar o mapeamento de dados georreferenciados, com a intenção de gerar informações inteligentes, para decisões estratégicas. Além do desenvolvimento de softwares, temos experiência em integração com hardwares especializados e mobile. Atuamos também na área da saúde em parceria com instituições de ensino e empresas privadas. Trabalhamos com inovação, comprometimento e cooperação, acreditando na transparência da comunicação e valorização das pessoas para a construção de laços duradouros.",
-  "main": "index.js",
+  "main": "backend/server.js",
   "dependencies": {
     "axios": "^0.19.0",
     "babel-preset-latest": "^6.24.1",
