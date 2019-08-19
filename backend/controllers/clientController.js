@@ -6,7 +6,7 @@ let createClient = (req, res) => {
     if (!body) {
         return res.status(400).json({
             success: false,
-            error: 'You must provide a client',
+            error: 'É necessário enviar os dados do cliente',
         })
     }
 
@@ -21,13 +21,13 @@ let createClient = (req, res) => {
             return res.status(201).json({
                 success: true,
                 id: client._id,
-                message: 'Client created!',
+                message: 'Cliente criado',
             })
         })
         .catch(error => {
             return res.status(400).json({
                 error,
-                message: 'Client not created!',
+                message: 'Cliente não criado!',
             })
         })
 }
@@ -38,7 +38,7 @@ let updateClient = async (req, res) => {
     if (!body) {
         return res.status(400).json({
             success: false,
-            error: 'You must provide a body to update',
+            error: 'Requisição não enviada',
         })
     }
 
@@ -46,7 +46,7 @@ let updateClient = async (req, res) => {
         if (err) {
             return res.status(404).json({
                 err,
-                message: 'Client not found!',
+                message: 'Cliente não encontrado',
             })
         }
         client.name = body.name
@@ -58,13 +58,13 @@ let updateClient = async (req, res) => {
                 return res.status(200).json({
                     success: true,
                     id: client._id,
-                    message: 'Client updated!',
+                    message: 'Cliente atualizado',
                 })
             })
             .catch(error => {
                 return res.status(404).json({
                     error,
-                    message: 'Client not updated!',
+                    message: 'Cliente não atualizado!',
                 })
             })
     })
@@ -79,7 +79,7 @@ let deleteClient = async (req, res) => {
         if (!client) {
             return res
                 .status(404)
-                .json({ success: false, error: `Client not found` })
+                .json({ success: false, error: `Cliente não encontrado` })
         }
 
         return res.status(200).json({ success: true, data: client })
@@ -104,7 +104,7 @@ let getClients = async (req, res) => {
         if (!clients.length) {
             return res
                 .status(404)
-                .json({ success: false, error: `Client not found` })
+                .json({ success: false, error: `Cliente não encontrado` })
         }
         return res.status(200).json({ success: true, data: clients })
     }).catch(err => console.log(err))

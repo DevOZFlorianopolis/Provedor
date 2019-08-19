@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import api from '../services/api'
 import Menu from '../components/menu'
-import FormData from '../components/form'
+import FormData from '../components/forms/formClient'
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as r from 'react-bootstrap';
@@ -22,7 +22,7 @@ class Client extends Component {
     };
 
     componentDidMount() {
-        this.getData();
+        this.getClient();
         if (!this.state.intervalIsSet) {
             let interval = setInterval(this.getClients, 1000);
             this.setState({intervalIsSet: interval});
@@ -36,7 +36,7 @@ class Client extends Component {
         }
     }
 
-    getClient = async (props) => {
+    getClient = async () => {
         fetch('http://localhost:3001/api/client/clients')
             .then((data) => data.json())
             .then((res) => this.setState({data: res.data}));
@@ -97,14 +97,14 @@ class Client extends Component {
                 <r.Row>
                     <r.Col xs lg="9">
                         <div className={'data-list'}>
-                            {data.map((dat) => (
+                            {data? data.map((dat) => (
                                 <article key={data.id}>
                                     <span style={{color: 'gray'}}> </span>
                                     <strong> {dat.name} </strong>
                                     {console.log(this.props)}
                                     <a onClick> Editar </a>
                                 </article>
-                            ))}
+                            )) : null}
                         </div>
                     </r.Col>
                     <r.Col xs lg="2">

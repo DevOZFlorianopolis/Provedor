@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import api from './services/api'
 import Menu from './components/menu'
-import FormProvider from './components/form'
+import FormProvider from './components/forms/formProvider'
 import provider from './pages/Provider'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';

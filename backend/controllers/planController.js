@@ -8,7 +8,7 @@ module.exports = {
         if (!body) {
             return res.status(400).json({
                 success: false,
-                error: 'You must provide a plan',
+                error: 'Requisição não enviada',
             })
         }
 
@@ -23,13 +23,13 @@ module.exports = {
                 return res.status(201).json({
                     success: true,
                     id: plan._id,
-                    message: 'Plan created!',
+                    message: 'Plano criado!',
                 })
             })
             .catch(error => {
                 return res.status(400).json({
                     error,
-                    message: 'Plan not created!',
+                    message: 'Plano não criado!',
                 })
             })
     },
@@ -40,7 +40,7 @@ module.exports = {
         if (!body) {
             return res.status(400).json({
                 success: false,
-                error: 'You must provide a body to update',
+                error: 'Sem requisição',
             })
         }
 
@@ -48,7 +48,7 @@ module.exports = {
             if (err) {
                 return res.status(404).json({
                     err,
-                    message: 'Plan not found!',
+                    message: 'Plano não encontrado',
                 })
             }
             plan.name = body.name
@@ -60,13 +60,13 @@ module.exports = {
                     return res.status(200).json({
                         success: true,
                         id: plan._id,
-                        message: 'Plan updated!',
+                        message: 'Plano atualizado',
                     })
                 })
                 .catch(error => {
                     return res.status(404).json({
                         error,
-                        message: 'Plan not updated!',
+                        message: 'Plan não atualizado',
                     })
                 })
         })
@@ -81,7 +81,7 @@ module.exports = {
             if (!plan) {
                 return res
                     .status(404)
-                    .json({success: false, error: `Plan not found`})
+                    .json({success: false, error: `Plano não encontrado`})
             }
 
             return res.status(200).json({success: true, data: plan})
@@ -106,7 +106,7 @@ module.exports = {
             if (!plans.length) {
                 return res
                     .status(404)
-                    .json({success: false, error: `Plan not found`})
+                    .json({success: false, error: `Plano não encontrado`})
             }
             return res.status(200).json({success: true, data: plans})
         }).catch(err => console.log(err));

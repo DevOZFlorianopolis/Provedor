@@ -6,7 +6,7 @@ let createProvider = (req, res) => {
     if (!body) {
         return res.status(400).json({
             success: false,
-            error: 'You must provide a provider',
+            error: 'Não foi enviada uma requisição válida',
         })
     }
 
@@ -22,13 +22,13 @@ let createProvider = (req, res) => {
             return res.status(201).json({
                 success: true,
                 id: provider._id,
-                message: 'Provider created!',
+                message: 'Provedor criado!',
             })
         })
         .catch(error => {
             return res.status(400).json({
                 error,
-                message: 'Provider not created!',
+                message: 'Provedor não criado!',
             })
         })
 }
@@ -39,7 +39,7 @@ let updateProvider = async (req, res) => {
     if (!body) {
         return res.status(400).json({
             success: false,
-            error: 'You must provide a body to update',
+            error: 'Sem requisição',
         })
     }
 
@@ -47,7 +47,7 @@ let updateProvider = async (req, res) => {
         if (err) {
             return res.status(404).json({
                 err,
-                message: 'Provider not found!',
+                message: 'Provedor não encontrado!',
             })
         }
         provider.name = body.name
@@ -59,13 +59,13 @@ let updateProvider = async (req, res) => {
                 return res.status(200).json({
                     success: true,
                     id: provider._id,
-                    message: 'Provider updated!',
+                    message: 'Provedor atualizado!',
                 })
             })
             .catch(error => {
                 return res.status(404).json({
                     error,
-                    message: 'Provider not updated!',
+                    message: 'Provedor não atualizado!',
                 })
             })
     })
@@ -80,7 +80,7 @@ let deleteProvider = async (req, res) => {
         if (!provider) {
             return res
                 .status(404)
-                .json({ success: false, error: `Provider not found` })
+                .json({ success: false, error: `Provedor não encontrado` })
         }
 
         return res.status(200).json({ success: true, data: provider })
@@ -105,7 +105,7 @@ let getProviders = async (req, res) => {
         if (!providers.length) {
             return res
                 .status(404)
-                .json({ success: false, error: `Provider not found` })
+                .json({ success: false, error: `Provedor não encontrado` })
         }
         return res.status(200).json({ success: true, data: providers })
     }).catch(err => console.log(err))

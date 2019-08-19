@@ -3,9 +3,11 @@ import {Nav, NavItem, Form, Button, FormControl, Navbar, Badge} from 'react-boot
 import Provider from '../pages/Provider'
 import Client from '../pages/Client'
 import Plan from '../pages/Plan'
+import ReactDOM from 'react-dom';
 import Image from "react-bootstrap/Image";
 import logo from '../resources/logoDevoz.png';
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+import App from "../App";
 
 
 class Menu extends Component {
@@ -22,9 +24,9 @@ class Menu extends Component {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                         <Router>
-                            <Nav.Link to="/providers">Provedores</Nav.Link>
-                            <Nav.Link to="/plans">Planos</Nav.Link>
-                            <Nav.Link to="/clients">Clientes</Nav.Link>
+                            <Nav.Link onClick={toProvider}>Provedores</Nav.Link>
+                            <Nav.Link onClick={toPlan}>Planos</Nav.Link>
+                            <Nav.Link onClick={toClient}>Clientes</Nav.Link>
                         </Router>
                     </Nav>
                     <Form inline>
@@ -35,10 +37,21 @@ class Menu extends Component {
 
                 </Navbar.Collapse>
             </Navbar>
+
         );
+        function toProvider () {
+            ReactDOM.render(<Provider />, document.getElementById('root'));
+        }
 
+        function toPlan () {
+            ReactDOM.render(<Plan />, document.getElementById('root'));
+        }
 
+        function toClient () {
+            ReactDOM.render(<Client />, document.getElementById('root'));
+        }
     }
+
 }
 
 export default Menu;

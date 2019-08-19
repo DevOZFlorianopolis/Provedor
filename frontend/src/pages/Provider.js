@@ -2,13 +2,13 @@
 import React, {Component} from 'react';
 import api from '../services/api'
 import Menu from '../components/menu'
-import FormData from '../components/form'
+import FormData from '../components/forms/formProvider'
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as r from 'react-bootstrap';
 
 
-class Provider {
+class Provider  extends Component {
 
     state = {
         data: [],
@@ -22,7 +22,7 @@ class Provider {
     };
 
     componentDidMount() {
-        this.getData();
+        this.getProvider();
         if (!this.state.intervalIsSet) {
             let interval = setInterval(this.getProviders, 1000);
             this.setState({intervalIsSet: interval});
