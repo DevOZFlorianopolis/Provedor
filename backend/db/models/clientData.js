@@ -15,7 +15,7 @@ const ClientSchema = new Schema({
             required: true,
             ref: 'Plan'
         }],
-        singDate: {
+        signDate: {
             type: Date,
             default: Date.now,
             required: true

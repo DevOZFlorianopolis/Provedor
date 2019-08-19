@@ -2,40 +2,66 @@ import React, {Component} from 'react';
 import {Form} from 'react-bootstrap';
 
 
-class Formf extends Component {
+class FormProvider extends Component {
     render() {
         return (
             <Form>
                 <Form.Group controlId="exampleForm.ControlInput1">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="name@example.com"/>
+                    <Form.Label>Id</Form.Label>
+                    <Form.Control placeholder="Identificação do provedor"/>
                 </Form.Group>
-                <Form.Group controlId="exampleForm.ControlSelect1">
-                    <Form.Label>Example select</Form.Label>
-                    <Form.Control as="select">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </Form.Control>
+
+                <Form.Group controlId="exampleForm.ControlInput2">
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control placeholder="Nome do provedor"/>
                 </Form.Group>
-                <Form.Group controlId="exampleForm.ControlSelect2">
-                    <Form.Label>Example multiple select</Form.Label>
-                    <Form.Control as="select" multiple>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </Form.Control>
-                </Form.Group>
-                <Form.Group controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Example textarea</Form.Label>
-                    <Form.Control as="textarea" rows="3"/>
+                <Form.Group controlId="exampleForm.ControlInput3">
+                    <Form.Label>CNPJ</Form.Label>
+                    <Form.Control placeholder="CNPJ do provedor"/>
                 </Form.Group>
             </Form>
         )
     }
 }
-export default Formf;
+
+class FormClient extends Component {
+    render() {
+        return (
+            <Form>
+                <Form.Group controlId="exampleForm.ControlInput1">
+                    <Form.Label>Id</Form.Label>
+                    <Form.Control placeholder="Identificação do cliente"/>
+                </Form.Group>
+
+                <Form.Group controlId="exampleForm.ControlInput2">
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control placeholder="Nome do cliente"/>
+                </Form.Group>
+            </Form>
+        )
+    }
+}
+
+class FormPlan extends Component {
+    render() {
+        return (
+            <Form>
+                <Form.Group controlId="exampleForm.ControlInput1">
+                    <Form.Label>Id</Form.Label>
+                    <Form.Control placeholder="Identificação do plano"/>
+                </Form.Group>
+
+                <Form.Group controlId="exampleForm.ControlInput2">
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control placeholder="Nome do plano"/>
+                </Form.Group>
+                <Form.Group controlId="exampleForm.ControlInput3">
+                    <Form.Label>Valor</Form.Label>
+                    <Form.Control placeholder="Valor do plano"/>
+                </Form.Group>
+            </Form>
+        )
+    }
+}
+
+export default FormProvider;

@@ -2,16 +2,19 @@
 import React, {Component} from 'react';
 import api from './services/api'
 import Menu from './components/menu'
-import Formf from './components/form'
+import FormProvider from './components/form'
+import provider from './pages/Provider'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import * as r from 'react-bootstrap';
 
 
 class App extends Component {
-    // initialize our state
+
     state = {
         data: [],
+        component: null,
         id: 0,
         message: null,
         intervalIsSet: false,
@@ -35,13 +38,13 @@ class App extends Component {
         }
     }
 
-    getProviders = async () => {
+    getData = async (props) => {
         fetch('http://localhost:3001/api/provider/providers')
             .then((data) => data.json())
             .then((res) => this.setState({data: res.data}));
     };
 
-    putProvider = (message) => {
+    putData = (message) => {
         let currentIds = this.state.data.map((data) => data.id);
 
         let idToBeAdded = 0;
@@ -55,9 +58,7 @@ class App extends Component {
         });
     };
 
-    // our delete method that uses our backend api
-    // to remove existing database information
-    deleteProvider = (idTodelete) => {
+    deleteData = (idTodelete) => {
         parseInt(idTodelete);
         let objIdToDelete = null;
         this.state.data.forEach((dat) => {
@@ -90,27 +91,27 @@ class App extends Component {
 
     render() {
         const {data} = this.state;
-
         return (
             <div>
                 <div>
                     <Menu/>
                 </div>
                 <r.Row>
-                    <r.Col xs lg="9">
+                    <r.Col xs lg="6">
                         <div className={'data-list'}>
                             {data.map((dat) => (
                                 <article key={data.id}>
                                     <span style={{color: 'gray'}}> </span>
                                     <strong> {dat.name} </strong>
+                                    {console.log(this.props)}
                                     <a onClick> Editar </a>
                                 </article>
-                            ))};
+                            ))}
                         </div>
                     </r.Col>
-                    <r.Col xs lg="2">
+                    <r.Col xs lg="6">
                         < div style={{marginTop: 30, marginLeft: 20, marginRight: 20}}>
-                            <Formf/>
+                            <FormProvider/>
                         </div>
                     </r.Col>
                 </r.Row>

@@ -15,14 +15,14 @@ const PlanSchema = new Schema({
             type: String,
             required: true
         },
-        // provider: {
-        //     type: String,
-        //     required: true
-        // },
-        // clients: [{
-        //     type:  Schema.Types.ObjectId,
-        //     ref: 'Client'
-        // }],
+        provider: {
+            type: String,
+            required: true
+        },
+        clients: [{
+            type:  Schema.Types.ObjectId,
+            ref: 'Client'
+        }],
     },
     {
         timestamps: true

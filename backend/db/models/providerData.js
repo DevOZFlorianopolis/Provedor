@@ -13,11 +13,11 @@ const ProviderSchema = new Schema({
             type: String,
             required: true
         },
-        // plans: [{
-        //     type: Schema.Types.ObjectId,
-        //     required: true,
-        //     ref: 'Plan'
-        // }],
+        plans: [{
+            type: Schema.Types.ObjectId,
+            required: true,
+            ref: 'Plan'
+        }],
         cnpj: {
             type: String,
             required: true
