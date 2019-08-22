@@ -14,7 +14,7 @@ A implementação deve prever no mínimo 3 entidades:
 
 | Nome do atributo | Tipo          | Comentário                                                                                      |
 |------------------|---------------|-------------------------------------------------------------------------------------------------|
-| id               | `number`      | Identificador único do provedor                                                                 |
+| id               | `Identificador`      | Identificador único do provedor                                                                 |
 | name             | `string`      | Nome do provedor                                                                                |
 | cnpj             | `string`      | CNPJ do provedor                                                                                |
 | plans            | `List<Plan>`  | Planos do provedor                                                                              |
@@ -22,16 +22,16 @@ A implementação deve prever no mínimo 3 entidades:
 ### Plano
 | Nome do atributo | Tipo          | Comentário                                                                                      |
 |------------------|---------------|-------------------------------------------------------------------------------------------------|
-| id               | `number`      | Identificador único do plano                                                                 |
+| id               | `Identificador`      | Identificador único do plano                                                                 |
 | name             | `string`      | Nome do plano                                                                                |
-| value            | `string`      | Valor do plano                                                                                |
+| value            | `number`      | Valor do plano                                                                                |
 | provider         | `Provedor`    | Referência ao provedor que possui o plano                                                       |
 | clients          | `List<Cliente>`| Clientes do plano                                                  |
 
 ### Cliente
 | Nome do atributo | Tipo          | Comentário                                                                                      |
 |------------------|---------------|-------------------------------------------------------------------------------------------------|
-| id               | `number`      | Identificador único do cliente                                                                 |
+| id               | `Identificador`      | Identificador único do cliente                                                                 |
 | name             | `string`      | Nome do cliente                                                                         |
 | plan             | `Plano`       | Plano que foi contratado                                                                        |
 | sign_date        | `date`        | Data de assinatura do plano                                                                     |
