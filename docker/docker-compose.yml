@@ -1,0 +1,10 @@
+version: '2'
+services:
+  mongodb:
+    container_name: MongoDB
+    restart: always
+    image: mongo:latest
+    volumes:
+      - ./volume/mongodb:/data/db
+volumes:
+  my-datavolume:
