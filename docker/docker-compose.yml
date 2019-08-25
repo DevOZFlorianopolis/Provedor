@@ -4,6 +4,8 @@ services:
     container_name: MongoDB
     restart: always
     image: mongo:latest
+    ports:
+      - "27017:27017"
     volumes:
       - ./volume/mongodb:/data/db
 volumes:
