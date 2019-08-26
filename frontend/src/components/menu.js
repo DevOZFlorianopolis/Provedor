@@ -5,7 +5,6 @@ import Client from '../pages/Client'
 import Plan from '../pages/Plan'
 import ReactDOM from 'react-dom';
 import Image from "react-bootstrap/Image";
-import logo from '../resources/logoDevoz.png';
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import App from "../App";
 
@@ -18,7 +17,6 @@ class Menu extends Component {
     render() {
         return (
             <Navbar bg="light" expand="lg">
-                <Image src={logo} style={{width: 35, marginRight: 10}}/>
                 <Navbar.Brand href="#home">DevOZ Net</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">
